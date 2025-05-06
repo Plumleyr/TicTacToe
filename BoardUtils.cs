@@ -10,11 +10,6 @@ namespace TicTacToe
     {
         public static bool CheckForWinOrDraw(Tile[,] tileArray, int turn)
         {
-            if(turn == 10)
-            {
-                Console.WriteLine("It's a draw!");
-            }
-
             int[][] winPatterns =
             [
                 // Rows
@@ -41,6 +36,11 @@ namespace TicTacToe
                     BoardGUI.DisplayBoard(tileArray);
                     Player player = Game.PlayerArray.FirstOrDefault(p => p.Symbol == (PlayerSymbols)(int)a)!;
                     Console.WriteLine($"{player.PlayerName} wins!");
+                    return true;
+                }
+                else if (turn == 9)
+                {
+                    Console.WriteLine("It's a draw!");
                     return true;
                 }
             }
