@@ -8,8 +8,13 @@ namespace TicTacToe
 {
     public static class BoardUtils
     {
-        public static Player? CheckForWin(Tile[,] tileArray)
+        public static bool CheckForWinOrDraw(Tile[,] tileArray, int turn)
         {
+            if(turn == 10)
+            {
+                Console.WriteLine("It's a draw!");
+            }
+
             int[][] winPatterns =
             [
                 // Rows
@@ -33,11 +38,14 @@ namespace TicTacToe
 
                 if(a == b && b == c)
                 {
-                    return Game.PlayerArray.FirstOrDefault(p => p.Symbol == (PlayerSymbols)(int)a)!;
+                    BoardGUI.DisplayBoard(tileArray);
+                    Player player = Game.PlayerArray.FirstOrDefault(p => p.Symbol == (PlayerSymbols)(int)a)!;
+                    Console.WriteLine($"{player.PlayerName} wins!");
+                    return true;
                 }
             }
 
-            return null;
+            return false;
         }
     }
 }

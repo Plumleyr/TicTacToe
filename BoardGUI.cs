@@ -36,6 +36,7 @@ namespace TicTacToe
                 }
                 if (i < 2) Console.WriteLine("\n---+---+---");
             }
+            Console.WriteLine();
         }
     }
 }

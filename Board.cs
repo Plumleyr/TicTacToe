@@ -26,7 +26,7 @@ namespace TicTacToe
         {
             foreach (Tile tile in BoardTiles)
             {
-                if(tile.TileValue == (TileValue)tileValue)
+                if(tile.TileInitValue == (TileValue)tileValue)
                 {
                     return tile;
                 }
@@ -34,10 +34,19 @@ namespace TicTacToe
             throw new ArgumentException($"No tile with value ${(TileValue)tileValue} found");
         }
 
-        public void SetTile(int tileValue, PlayerSymbols playerSymbol)
+        public bool ChangeTile(int tileValue, PlayerSymbols playerSymbol)
         {
             Tile tile = GetTile(tileValue);
-            tile.TileValue = (TileValue)playerSymbol;
+
+            if(tile.TileValue != TileValue.X && tile.TileValue != TileValue.O)
+            {
+                tile.TileValue = (TileValue)playerSymbol;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

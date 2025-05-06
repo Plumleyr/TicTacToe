@@ -9,6 +9,7 @@ namespace TicTacToe
     public class Tile(TileValue value)
     {
         public TileValue TileValue { get; set; } = value;
+        public TileValue TileInitValue { get; init; } = value;
     }
 
     public enum TileValue
